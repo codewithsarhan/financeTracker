@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Personal Finance Tracker</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/charts.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+                    <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+                    <path d="M18 12a2 2 0 0 0 0 4h4v-4h-4z"/>
+                </svg>
+                <h1>FinanceTracker</h1>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="budget.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/>
+                            <path d="M21 3v5h-5"/>
+                        </svg>
+                        <span>Budget</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="goals.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Goals</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="reports.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 20V10M12 20V4M6 20v-6"/>
+                        </svg>
+                        <span>Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h2>Financial Reports</h2>
+                <div class="report-controls">
+                    <select id="reportPeriod" class="filter-select">
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                    <input type="month" id="reportMonth" class="filter-date">
+                    <input type="number" id="reportYear" class="filter-date" placeholder="Year" min="2020" max="2099">
+                </div>
+            </header>
+
+            <!-- Summary Stats -->
+            <section class="report-summary">
+                <div class="card stat-card">
+                    <p class="stat-label">Total Income</p>
+                    <h3 id="reportIncome" class="stat-value">$0.00</h3>
+                </div>
+                <div class="card stat-card">
+                    <p class="stat-label">Total Expenses</p>
+                    <h3 id="reportExpenses" class="stat-value">$0.00</h3>
+                </div>
+                <div class="card stat-card">
+                    <p class="stat-label">Net Savings</p>
+                    <h3 id="reportSavings" class="stat-value">$0.00</h3>
+                </div>
+                <div class="card stat-card">
+                    <p class="stat-label">Savings Rate</p>
+                    <h3 id="reportSavingsRate" class="stat-value">0%</h3>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="report-charts">
+                <div class="card chart-card">
+                    <h3>Income vs Expenses</h3>
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+                <div class="card chart-card">
+                    <h3>Expense Breakdown</h3>
+                    <canvas id="expenseBreakdownChart"></canvas>
+                </div>
+                <div class="card chart-card full-width">
+                    <h3>Spending Trend</h3>
+                    <canvas id="spendingTrendChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section class="export-section card">
+                <h3>Export Report</h3>
+                <p>Download your financial report for record keeping</p>
+                <button id="exportReport" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Export as CSV
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/charts.js"></script>
+</body>
+</html>

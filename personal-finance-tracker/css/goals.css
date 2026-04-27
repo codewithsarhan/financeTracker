@@ -1,0 +1,248 @@
+/* Goals Page Styles */
+
+/* Goals Grid */
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+/* Goal Card */
+.goal-card {
+    padding: 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.goal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+.goal-card.completed::before {
+    background: linear-gradient(90deg, var(--secondary), #34D399);
+}
+
+/* Goal Header */
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.goal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.goal-deadline {
+    font-size: 0.8125rem;
+    color: var(--text-light);
+}
+
+.goal-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Goal Progress */
+.goal-progress {
+    margin-bottom: 20px;
+}
+
+.progress-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+    position: relative;
+}
+
+.progress-circle svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: var(--border-light);
+    stroke-width: 8;
+}
+
+.progress-circle-fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.progress-circle-fill.safe {
+    stroke: var(--secondary);
+}
+
+.progress-circle-fill.warning {
+    stroke: var(--warning);
+}
+
+.progress-circle-fill.danger {
+    stroke: var(--primary);
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-percentage {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.progress-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+/* Goal Amounts */
+.goal-amounts {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: var(--border-light);
+    border-radius: var(--radius);
+}
+
+.goal-current {
+    text-align: center;
+}
+
+.goal-current-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.goal-current-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.goal-target {
+    text-align: center;
+}
+
+.goal-target-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.goal-target-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* Remaining Info */
+.goal-remaining {
+    text-align: center;
+    padding: 12px;
+    background: var(--border-light);
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+}
+
+.remaining-amount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.remaining-days {
+    font-size: 0.8125rem;
+    color: var(--text-light);
+}
+
+/* Goal Actions Footer */
+.goal-footer {
+    display: flex;
+    gap: 12px;
+}
+
+.goal-footer .btn {
+    flex: 1;
+    justify-content: center;
+}
+
+/* Completed Badge */
+.completed-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--secondary);
+    border-radius: 20px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .goals-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .goals-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .goal-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .goal-footer {
+        flex-direction: column;
+    }
+
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-percentage {
+        font-size: 1.5rem;
+    }
+}

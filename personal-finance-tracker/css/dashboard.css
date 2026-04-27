@@ -1,0 +1,241 @@
+/* Dashboard Styles */
+
+/* Summary Cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.summary-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.summary-icon.balance {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+}
+
+.summary-icon.income {
+    background: linear-gradient(135deg, var(--secondary), #34D399);
+    color: white;
+}
+
+.summary-icon.expense {
+    background: linear-gradient(135deg, var(--danger), #F87171);
+    color: white;
+}
+
+.summary-icon.savings {
+    background: linear-gradient(135deg, var(--warning), #FBBF24);
+    color: white;
+}
+
+.summary-info {
+    flex: 1;
+}
+
+.summary-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-bottom: 2px;
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* Charts Section */
+.charts-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.chart-card {
+    min-height: 260px;
+    max-height: 260px;
+    padding: 16px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.chart-header h3 {
+    margin-bottom: 0;
+}
+
+.chart-filters {
+    display: flex;
+    gap: 6px;
+}
+
+.chart-filter-btn {
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chart-filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.chart-filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.chart-card h3 {
+    margin-bottom: 12px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+/* Recent Transactions */
+.recent-transactions {
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.transactions-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.2s;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-item:hover {
+    background: var(--border-light);
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-description {
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+    font-size: 0.8125rem;
+}
+
+.transaction-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 0.6875rem;
+    color: var(--text-light);
+}
+
+.transaction-amount {
+    font-size: 0.9375rem;
+    font-weight: 700;
+}
+
+.transaction-amount.income {
+    color: var(--secondary);
+}
+
+.transaction-amount.expense {
+    color: var(--danger);
+}
+
+/* Quick Add Form */
+.quick-add-section {
+    margin-bottom: 32px;
+}
+
+.quick-add-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    align-items: end;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-value {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        padding: 16px;
+    }
+
+    .chart-card {
+        min-height: 240px;
+        padding: 16px;
+    }
+}
