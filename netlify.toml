@@ -1,0 +1,12 @@
+[build]
+  publish = "personal-finance-tracker"
+  command = ""
+
+[dev]
+  command = ""
+  targetPort = 3000
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
